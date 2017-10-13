@@ -1,14 +1,14 @@
-#RxSwift/RxCocoa - 一种解决UITableViewCell重复订阅问题的思路
+# RxSwift/RxCocoa - 一种解决UITableViewCell重复订阅问题的思路
 
 如果读者已经将RxSwift运用到项目中,或者写过相关的demo,想必一定遇到过UITableViewCell重复订阅的问题。本文将进入RxCocoa内部,粗略的探索部分源码,最终提供解决思路。
 
 
 
-##问题描述
+## 问题描述
 UITableViewCell的点击事件可以通过订阅tableView.rx.itemSelected进行监听,但如果cell内部存在一个button1,如何订阅到该button1的点击又不会产生重复订阅的问题呢？
 
 
-##探索阶段
+## 探索阶段
 笔者踩坑的过程这里就不赘述了,最终的思路被定位RxCocoa对UITableView的实现上。当然,读者也可以跳过这段的内容,直接看结论。
 
 
@@ -164,7 +164,7 @@ open class DelegateProxy : _RXDelegateProxy {
 
 > 4. 最终到达`_RXDelegateProxy`的 `forwardInvocation(:)`方法中。 在这里, 终于算是监听到了cell的点击事件了。既然RxTableViewDelegateProxy已经监听到了cell的点击, 剩下的就交给它就Ok, 我们订阅相应的Observable就好了。
 
-##最终解决方案
+## 最终解决方案
 根据以上的结论,以下为笔者最终的解决方案(MyTableViewCell, MyTableView均为自定义view):
 > * 为`MyTableViewCell`增加delegate为:
 > 
