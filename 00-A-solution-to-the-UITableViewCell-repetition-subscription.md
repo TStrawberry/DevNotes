@@ -217,7 +217,7 @@ extension Reactive where Base == MyTableView {
 ```
 
 
-当然了, 如果读者觉得定义新的协议太麻烦, 你也可以不定义, 直接使用字符串去创建selector, 同时你也必须十分小心, 并且清楚自己在做什么。
+
 
 
 
