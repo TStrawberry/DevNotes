@@ -2,13 +2,12 @@
 ## 写在最开始
 个人随笔,文笔实在有限,强烈建议读者直接查看[**demo**](https://github.com/tangtaotao/ServerAPIDemo)。
 ## 准备工作
-Swift为开发者提供了强大的泛型支持,本文将实现一个简单的网络层封装,看看泛型如何为代码带来提升。  
-由于本文的重点集中在泛型上,因此其他的逻辑将使用三方库,demo中使用的三方库有:
+Swift为开发者提供了强大的泛型和协议支持,本文将实现一个简单的网络层封装,看看这两种强大特性如何为代码带来提升。  
+由于本文的重点集中在泛型和协议上上,因此其他的逻辑将使用三方库,demo中使用的三方库有:
 
 - [Alamofire](https://github.com/Alamofire/Alamofire) - 网络请求
 - [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper) - 转模型
 - [AlamofireObjectMapper](https://github.com/tristanhimmelman/AlamofireObjectMapper) - 对以上两者的封装
-- [RxSwift](https://github.com/ReactiveX/RxSwift) - 函数响应式框架
 
 项目的UI结构很简单,根控制器的view正中心有两个UILabel用于显示网络请求的结果。  
 项目中使用的服务器接口来自[**DarkSky**](https://darksky.net/dev/docs)提供的公开接口,用于获取天气。不过笔者将仅使用 Forecast Request 这一个接口进行演示。该接口的信息如下:  
@@ -25,7 +24,7 @@ https://api.darksky.net/forecast/[key]/[latitude],[longitude]
 	...
 }
 ```  
-因此根据返回的类型数据格式建立模型如下:
+因此根据返回的数据格式建立模型如下:
 
 ```swift
 /// Models.swift
@@ -71,10 +70,10 @@ func request(url: URLConvertible, parameters: Alamofire.Parameters? = nil, callB
 
 ```  
 以此就可以为模版为更多的接口构建请求方法了,但是可能读者已经知道,这样做没有什么意义,有大量的代码重复,不一样的只是将Weather修改成其他的模型类型。所以接下来的一步就是要使用泛型将网络请求的逻辑进行抽象了。  
-其实在代码中已经有一个泛型函数了,那就是 responseObject... 方法。它将网络请求的数据进行转成了模型,放在了 dataResponse 中。于此同时, 我们通过在代码中显式的制定dataResponse的类型为 DataResponse<Weather> 也就将模型的类型(也就是Weather)传递到了该函数中,以此才能正确的创建我们需要的类型。所以接下来泛型改造的第一步就是要将模型类型的使用泛型传递。  
+其实在代码中已经有一个泛型函数了,那就是 responseObject... 方法。它将网络请求的数据进行转成了模型,放在了 dataResponse 中。于此同时, 我们通过在代码中显式的指定 dataResponse 的类型为 DataResponse<Weather> 也就将模型的类型(也就是Weather)传递到了该函数中,以此才能正确的创建我们需要的类型。所以接下来, 泛型改造的第一步就是要将模型类型使用泛型传递。  
 
 ## 引入泛型参数
-在本项目中, 能够转模型的要求其实很简单, 就是必须实现 ObjectMapper.Mappable 这个协议(当然不仅仅是 ObjectMapper.Mappable, 这里笔者只已 Mappable 为例, 关于 ObjectMapper 的更多用法请查看其主页。), 因此对泛型类型进行协议约束就好。改造后的版本是这样的:  
+在本项目中, 能够转模型的要求其实很简单, 就是必须实现 ObjectMapper.Mappable 这个协议(当然不仅仅是 ObjectMapper.Mappable, 这里笔者只已 Mappable 为例, 关于 ObjectMapper 的更多用法请查看其主页), 因此对泛型类型进行协议约束就好。改造后的版本为:  
 
 ```swift
 func request<T: Mappable>(url: URLConvertible, parameters: Alamofire.Parameters? = nil, callBack:  @escaping (Result<T>) -> Void) {
