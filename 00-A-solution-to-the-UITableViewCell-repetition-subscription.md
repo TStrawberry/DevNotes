@@ -110,7 +110,7 @@ extension UITableView {
 
 虽说是推断,但是事实也确实如此,读者可以自行验证。  
 那么现在的问题就转化成了**RxTableViewDelegateProxy是如何监听到UITableViewDelegate代理事件的。**  
-读者可能觉得一头雾水,不是遵循了UITableViewDelegate协议了吗,监听到代理事件就是理所因当的啊？但是有一个很重要的细节是:**RxTableViewDelegateProxy虽然遵循了UITableViewDelegate,但是它并没有实现其中的任何方法。**是不是觉得有点神奇了？
+读者可能觉得一头雾水,不是遵循了UITableViewDelegate协议了吗,监听到代理事件就是理所因当的啊？但是有一个很重要的细节是: **RxTableViewDelegateProxy虽然遵循了UITableViewDelegate,但是它并没有实现其中的任何方法。** 是不是觉得有点神奇了？
 
 RxTableViewDelegateProxy所在继承链是这个样子的：  
 ```
