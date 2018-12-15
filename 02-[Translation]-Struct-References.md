@@ -248,7 +248,7 @@ print(p0.value) // what does this print?
 var source = Ref<Addressbook>(initialValue: [], 
     queue: DispatchQueue(label: "private queue"))
 ```
-将其整合进数据库也是不错的想法。`Var` 意味着你可以进行读写操作, 已经订阅到任何通知流程中去:
+将其整合进数据库也是不错的想法。`Var` 意味着你可以进行读写操作, 以及订阅到任何通知流程中去:
 
 ```swift
 final class MyDatabase {
