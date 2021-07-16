@@ -6,4 +6,9 @@
 
 * [Swift - 为结构体添加引用语义(译文)](https://github.com/tangtaotao/DevNotes/blob/master/02-[Translation]-Struct-References.md)  
 
-欢迎读者指正, 谢谢。
+* [弹幕的数据设计](https://github.com/TStrawberry/DevNotes/blob/master/03-Design-of-danmaku-data.md)  
+
+  
+
+  欢迎读者指正, 谢谢。
+
