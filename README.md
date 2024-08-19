@@ -12,4 +12,6 @@
 
 - [如何实现 mobile app 每周发版](https://github.com/TStrawberry/DevNotes/blob/master/05-Release-mobile-app-weekly.md)
 
+- [理解 OC Block 疑惑点](https://github.com/TStrawberry/DevNotes/blob/master/06-How-to-understand-the-confusion-of-block.md)
+
   欢迎读者指正, 谢谢。
