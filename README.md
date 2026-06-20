@@ -14,4 +14,6 @@
 
 - [理解 OC Block 疑惑点](https://github.com/TStrawberry/DevNotes/blob/master/06-How-to-understand-the-confusion-of-block.md)
 
+- [An Architecture Design for Dependency Injection on NavigationStack](https://github.com/TStrawberry/DevNotes/blob/master/07-An-architecture-design-of-dependency-injection-on-NavigationStack.md)
+
   欢迎读者指正, 谢谢。
