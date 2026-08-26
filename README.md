@@ -1,4 +1,4 @@
-# DevNotes - 个人学习总结笔记
+# DevNotes 
 
 - [RxSwift/RxCocoa - 一种解决 UITableViewCell 重复订阅问题的思路](https://github.com/tangtaotao/DevNotes/blob/master/00-A-solution-to-the-UITableViewCell-repetition-subscription.md)
 
@@ -16,4 +16,5 @@
 
 - [An Architecture Design for Dependency Injection on NavigationStack](https://github.com/TStrawberry/DevNotes/blob/master/07-An-architecture-design-of-dependency-injection-on-NavigationStack.md)
 
-  欢迎读者指正, 谢谢。
+- [Join Views in SwiftUI](https://github.com/TStrawberry/DevNotes/blob/master/08-Join-Views-in-SwiftUI.md)
+
