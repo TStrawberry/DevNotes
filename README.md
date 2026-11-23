@@ -18,3 +18,5 @@
 
 - [Join Views in SwiftUI](https://github.com/TStrawberry/DevNotes/blob/master/08-Join-Views-in-SwiftUI.md)
 
+- [An Enhanced Encapsulation of onAppear and onDisappear in SwiftUI](https://github.com/TStrawberry/DevNotes/blob/master/09-Enhanced-onAppear-onDisappear-in-SwiftUI.md)
+
